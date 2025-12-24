@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <link rel="icon" href="https://www.bing.com/sa/simg/bing_p_rrrrr.ico" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>使用 Bing 搜索</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .search-container {
+      text-align: center;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    .logo {
+      margin-bottom: 30px;
+    }
+
+    .logo h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: #0078d7; /* Bing 主色 */
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+    }
+
+    #search-input {
+      flex: 1;
+      padding: 14px 20px;
+      font-size: 1.1rem;
+      border: 1px solid #ccc;
+      border-radius: 24px;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s;
+    }
+
+    #search-input:focus {
+      border-color: #0078d7;
+      box-shadow: 0 2px 12px rgba(0,120,215,0.3);
+    }
+
+    #search-button {
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      background-color: #0078d7;
+      color: white;
+      border: none;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #search-button:hover {
+      background-color: #0066b5;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .footer a {
+      color: #0078d7;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="search-container">
+    <div class="logo">
+      <h1>Bing 搜索</h1>
+    </div>
+    <form id="search-form">
+      <div class="search-box">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="请输入搜索关键词..."
+          autocomplete="off"
+          autofocus
+        />
+        <button type="submit" id="search-button">搜索</button>
+      </div>
+    </form>
+    <div class="footer">
+      搜索结果由 <a href="https://www.bing.com" target="_blank">Bing</a> 提供
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('search-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+        // 跳转到 Bing 搜索
+        const url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
+        window.open(url, '_blank'); // 在新标签页打开
+        // 或使用 window.location.href = url; 在当前页打开
+      }
+    });
+  </script>
+</body>
+</html>
